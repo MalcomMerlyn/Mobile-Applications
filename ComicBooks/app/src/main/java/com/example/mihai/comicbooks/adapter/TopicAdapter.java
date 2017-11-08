@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
+import com.example.mihai.comicbooks.R;
 import com.example.mihai.comicbooks.model.Topic;
 
 import java.util.ArrayList;
@@ -39,6 +41,12 @@ public class TopicAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        View topicsView = View.inflate(context, R.layout.topics_view, null);
+        TextView titleView = topicsView.findViewById(R.id.textView2);
+        TextView textView = topicsView.findViewById(R.id.textView3);
+        titleView.setText(topics.get(i).getTitle());
+        textView.setText(topics.get(i).getText());
+        topicsView.setTag(topics.get(i));
         return null;
     }
 }
