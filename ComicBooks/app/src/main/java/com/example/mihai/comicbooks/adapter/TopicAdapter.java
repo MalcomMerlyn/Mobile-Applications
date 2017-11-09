@@ -19,6 +19,11 @@ public class TopicAdapter extends BaseAdapter {
     private Context context;
     ArrayList<Topic> topics;
 
+    public TopicAdapter(Context context, ArrayList<Topic> topics) {
+        this.context = context;
+        this.topics = topics;
+    }
+
     public void add(Topic topic) {
         topics.add(topic);
         notifyDataSetChanged();
