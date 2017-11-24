@@ -35,7 +35,7 @@ public class TopicAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Topic getItem(int i) {
         return topics.get(i);
     }
 
