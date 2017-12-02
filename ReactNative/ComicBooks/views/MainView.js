@@ -21,7 +21,8 @@ export class MainView extends React.Component
         title: 'Comic Book Sharing'
     }
 
-    constructor(props) {
+    constructor(props)
+    {
         super(props);
     }
 

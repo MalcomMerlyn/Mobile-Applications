@@ -10,7 +10,7 @@ const SimpleStack = StackNavigator({
     },
     Details: {
         screen: DetailView,
-        navigationOptions: navigation => ({
+        navigationOptions: ({ navigation }) => ({
             title: `${navigation.state.params.comic.title.toUpperCase()}`,
         }),
     },

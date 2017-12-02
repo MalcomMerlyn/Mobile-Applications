@@ -13,16 +13,18 @@ export class List extends React.Component
 
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
+        console.log("List::constructor : this.props = ", this.props);
+
         this.state = {array: [
-            {key: 0, comic: {title: 'Aaa', description: 'Aaa'}}
+            {key: 0, comic: {title: 'Batman', description: 'First issue appeared in the spring of 1940'}},
+            {key: 1, comic: {title: 'Superman', description: 'First issue appeared in the summer of 1939'}},
         ]};
     }
 
     handleClickedItem(index)
     {
-        console.log(index);
+        console.log("List::handleClickedItem : index = ", index);
         let comic = this.state.array[index].comic;
-        console.log(comic);
         this.props.navigator('Details', {index: index, comic: comic, updateComicBook: this.handleChangedObject});
     }
 
@@ -36,11 +38,12 @@ export class List extends React.Component
 
     render()
     {
+        console.log("List::render : this.state.array = ", this.state.array);
         return (
             <FlatList
                 data={this.state.array}
                 extraData={this.state}
-                renderItem={ item => <ListItem comicKey={item.key} comic={item.comic} clickedItem={this.handleClickedItem}/> }
+                renderItem={ ({item}) => <ListItem comicKey={item.key} comic={item.comic} clickedItem={this.handleClickedItem}/> }
             />
         );
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, TextInput, StyleSheet} from "react-native";
+import {Text, TextInput, StyleSheet, View} from "react-native";
 
 const styles = StyleSheet.create({
     baseText: {
@@ -17,26 +17,16 @@ export class ComicBookEdit extends React.Component {
     {
         super(props);
 
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        console.log("ComicBookEdit::constructor : this.props = ", this.props);
 
         this.state = { titleText: this.props.title, descriptionText: this.props.description};
     }
 
-    handleTitleChanged(titleText)
-    {
-        this.setState({titleText});
-    }
-
-    handleDescriptionChanged(descriptionText)
-    {
-        this.setState(descriptionText);
-    }
-
     componentWillUnmount()
     {
-        let newComicBook = {comic: {title: this.state.titleText, description: this.state.descriptionText}};
+        console.log("ComicBookEdit::componentWillUnmount : this.props = ", this.props);
 
+        let newComicBook = {comic: {title: this.state.titleText, description: this.state.descriptionText}};
         this.props.updateComicBook(this.props.index, newComicBook);
     }
 
@@ -47,14 +37,14 @@ export class ComicBookEdit extends React.Component {
                 <TextInput
                     style={{height: 35, borderColor: 'black', borderWidth: 2}}
                     name='NameInput'
-                    onhangedText={this.handleTitleChange}
+                    onChangeText={(titleText) => this.setState({titleText})}
                     value={this.state.titleText}
                 />
                 <Text style={styles.titleText}>Description:</Text>
                 <TextInput
                     style={{height: 35, borderColor: 'black', borderWidth: 2}}
                     name='DescriptionInput'
-                    onChangedText={this.handleDescriptionChange}
+                    onChangeText={(descriptionText) => this.setState({descriptionText})}
                     value={this.state.descriptionText}
                 />
             </View>

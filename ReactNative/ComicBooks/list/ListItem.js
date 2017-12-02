@@ -6,6 +6,8 @@ export class ListItem extends React.Component {
     {
         super(props);
 
+        console.log("ListItem::constructor : this.props = ", this.props);
+
         this.handlePress = this.handlePress.bind(this);
     }
 
@@ -21,7 +23,7 @@ export class ListItem extends React.Component {
                 onPress={this.handlePress}
                 style={{backgroundColor: 'red'}}
             >
-                <Text>Title: {this.props.title}, Description: {this.props.description}</Text>
+                <Text>Title: {this.props.comic.title} {"\n"}Description: {this.props.comic.description}</Text>
             </TouchableOpacity>
         );
     }
