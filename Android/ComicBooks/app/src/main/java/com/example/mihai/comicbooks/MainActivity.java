@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.mihai.comicbooks.adapter.TopicAdapter;
+import com.example.mihai.comicbooks.utils.TopicAdapter;
 import com.example.mihai.comicbooks.model.Topic;
 
 import java.util.ArrayList;
@@ -34,23 +34,26 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listTopics);
         topics = new ArrayList<>();
         topics.add(new Topic(
-                id++,
+                1,
                 "Places where to buy comics.",
                 "The best place to buy comics in Cluj-Napoca is Libraria Universitatii."
         ));
 
         final EditText titleEditText = (EditText)findViewById(R.id.titleEditText);
-        final EditText textEditText = (EditText)findViewById(R.id.textEditText);
+        final EditText textEditText = (EditText)findViewById(R.id.descriptionEditText);
 
         adapter = new TopicAdapter(this, topics);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                titleEditText.setText(adapter.getItem(i).getTitle());
-                textEditText.setText(adapter.getItem(i).getDescription());
-                selectedTopicId = adapter.getItem(i).getId();
-                edited = true;
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l)
+            {
+                Topic topic = adapter.getItem(pos);
+
+                Intent intent = new Intent(MainActivity.this, TopicEditActivity.class);
+                intent.putExtra("TOPIC", topic);
+
+                startActivityForResult(intent, REQ_CODE_CHILD);
             }
         });
     }
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     {
         if (requestCode == REQ_CODE_CHILD)
         {
-            Topic topic = (Topic)data.getExtras().getSerializable("UPDATE_TOPIC");
+            Topic topic = (Topic)data.getExtras().getSerializable("UPDATED_TOPIC");
             adapter.updateTopic(topic);
         }
     }

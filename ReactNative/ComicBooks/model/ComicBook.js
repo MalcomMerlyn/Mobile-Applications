@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Linking, Text, TextInput, View} from "react-native";
+import {TypePicker} from "../utils/TypePicker";
 
 export class ComicBook extends React.Component
 {
@@ -10,14 +11,27 @@ export class ComicBook extends React.Component
         console.log("ComicBook::constructor : this.props = ", this.props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = { titleText: 'a', descriptionText: 'a'}
+        this.state = { titleText: '', descriptionText: '', typeText: ''}
     }
 
     handleSubmit()
     {
-        let body = `Added a topic with title: ${this.state.titleText}, description: ${this.state.descriptionText}`;
+        let body = `Added a topic with title: ${this.state.titleText}, description: ${this.state.descriptionText}, type: ${this.state.typeText}`;
 
         Linking.openURL('mailto:jugariu_mihai@yahoo.com?subject=React&body=' + body);
+    }
+
+    handleAddComicBook()
+    {
+        let comic = {
+            title: this.state.titleText,
+            description: this.state.descriptionText,
+            type: this.state.typeText
+        };
+
+        this.setState({ titleText: '', descriptionText: '', typeText: '' });
+
+        this.props.addComicBook(comic);
     }
 
     render() {
@@ -41,9 +55,19 @@ export class ComicBook extends React.Component
                     value={this.state.descriptionText}
                 />
 
+                <TypePicker
+                    selectedValue={this.state.typeText}
+                    onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
+                />
+
                 <Button
                     title='Send email'
                     onPress={this.handleSubmit}
+                />
+
+                <Button
+                    title='Add comic book'
+                    onPress={this.handleAddComicBook.bind(this)}
                 />
             </View>
         );

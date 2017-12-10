@@ -1,10 +1,12 @@
 package com.example.mihai.comicbooks.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Mihai on 11/9/2017.
  */
 
-public class Topic {
+public class Topic implements Serializable {
     private int id;
     private String title;
     private String description;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar} from 'react-native';
 import {StackNavigator} from "react-navigation";
 import {MainView} from "./views/MainView";
 import {DetailView} from "./views/DetailView";
@@ -19,7 +19,7 @@ const SimpleStack = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <SimpleStack></SimpleStack>
+        <SimpleStack style={{paddingTop: StatusBar.currentHeight}}></SimpleStack>
     );
   }
 }

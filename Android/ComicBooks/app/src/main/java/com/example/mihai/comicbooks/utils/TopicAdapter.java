@@ -1,4 +1,4 @@
-package com.example.mihai.comicbooks.adapter;
+package com.example.mihai.comicbooks.utils;
 
 import android.content.Context;
 import android.view.View;
@@ -69,8 +69,8 @@ public class TopicAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View topicsView = View.inflate(this.context, R.layout.topics_view, null);
-        TextView titleView = topicsView.findViewById(R.id.textView2);
-        TextView textView = topicsView.findViewById(R.id.textView3);
+        TextView titleView = topicsView.findViewById(R.id.titleTextView);
+        TextView textView = topicsView.findViewById(R.id.descriptionTextView);
 
         titleView.setText(topics.get(i).getTitle());
         textView.setText(topics.get(i).getDescription());

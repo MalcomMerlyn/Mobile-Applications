@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
 export class MainView extends React.Component
 {
     static navigationOptions = {
-        title: 'Comic Book Sharing'
+        title: 'Comic Book Sharing',
+        headerStyle: {paddingTop: StatusBar.currentHeight}
     }
 
     constructor(props)
@@ -28,14 +29,7 @@ export class MainView extends React.Component
 
     render() {
         return(
-            <View style={styles.container}>
-                <View style={{flex: 1}}>
-                    <ComicBook/>
-                </View>
-                <View style={{flex: 1}}>
-                    <List navigator={this.props.navigation.navigate}/>
-                </View>
-            </View>
+            <List navigator={this.props.navigation.navigate}/>
         );
     }
 }

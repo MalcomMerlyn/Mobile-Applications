@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, TouchableOpacity} from "react-native";
+import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 export class ListItem extends React.Component {
     constructor(props)
@@ -16,15 +16,40 @@ export class ListItem extends React.Component {
         this.props.clickedItem(this.props.comicKey);
     }
 
+    handleDelete()
+    {
+        this.props.clickedDelete(this.props.comicKey);
+    }
+
     render()
     {
         return (
-            <TouchableOpacity
-                onPress={this.handlePress}
-                style={{backgroundColor: 'red'}}
-            >
-                <Text>Title: {this.props.comic.title} {"\n"}Description: {this.props.comic.description}</Text>
-            </TouchableOpacity>
+            <View style={styles.listItem}>
+                <TouchableOpacity
+                    onPress={this.handlePress}
+                    style={{backgroundColor: 'red'}}
+                >
+                    <Text>Title: {this.props.comic.title} Type: {this.props.comic.type} {"\n"}Description: {this.props.comic.description}</Text>
+                </TouchableOpacity>
+
+                <Button
+                    title='Delete'
+                    onPress={this.handleDelete.bind(this)}
+                />
+            </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    listItem: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        //alignItems: 'center',
+        backgroundColor: 'darkgoldenrod',
+        height: 70,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1
+    },
+});

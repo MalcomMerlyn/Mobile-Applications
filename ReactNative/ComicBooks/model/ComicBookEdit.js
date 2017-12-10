@@ -1,5 +1,6 @@
 import React from "react";
-import {Text, TextInput, StyleSheet, View} from "react-native";
+import {Alert, Text, TextInput, StyleSheet, View} from "react-native";
+import {TypePicker} from "../utils/TypePicker";
 
 const styles = StyleSheet.create({
     baseText: {
@@ -19,15 +20,50 @@ export class ComicBookEdit extends React.Component {
 
         console.log("ComicBookEdit::constructor : this.props = ", this.props);
 
-        this.state = { titleText: this.props.title, descriptionText: this.props.description};
+        this.state = {
+            titleText: this.props.title,
+            descriptionText: this.props.description,
+            typeText: this.props.type
+        };
+    }
+
+    updateComicBook()
+    {
+        let newComicBook = { comic: {
+            title: this.state.titleText,
+            description: this.state.descriptionText,
+            type: this.state.typeText
+        }};
+
+        this.props.updateComicBook(this.props.index, newComicBook);
     }
 
     componentWillUnmount()
     {
-        console.log("ComicBookEdit::componentWillUnmount : this.props = ", this.props);
+        if (this.state.titleText != this.props.titleText ||
+            this.state.descriptionText != this.props.descriptionText ||
+            this.state.typeText != this.props.typeText
+        ) {
+            console.log("ComicBookEdit::componentWillUnmount : this.props = ", this.props);
 
-        let newComicBook = {comic: {title: this.state.titleText, description: this.state.descriptionText}};
-        this.props.updateComicBook(this.props.index, newComicBook);
+            //let newComicBook = {comic: {title: this.state.titleText, description: this.state.descriptionText}};
+            //this.props.updateComicBook(this.props.index, newComicBook);
+
+            Alert.alert(
+                'Save?',
+                'Would you like to save changes?',
+                [
+                    {text: 'NO'},
+                    {text: 'YES', onPress: () => this.updateComicBook()},
+                ],
+                {cancelable: false}
+            );
+        }
+    }
+
+    handleOnValueChange(itemValue, itemIndex)
+    {
+        this.setState({type: itemValue});
     }
 
     render() {
@@ -46,6 +82,11 @@ export class ComicBookEdit extends React.Component {
                     name='DescriptionInput'
                     onChangeText={(descriptionText) => this.setState({descriptionText})}
                     value={this.state.descriptionText}
+                />
+                <Text style={styles.typeText}>Type:</Text>
+                <TypePicker
+                    selectedValue={this.state.typeText}
+                    onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
                 />
             </View>
         );

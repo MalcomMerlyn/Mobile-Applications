@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mihai.comicbooks.adapter.TopicAdapter;
+import com.example.mihai.comicbooks.utils.TopicAdapter;
 import com.example.mihai.comicbooks.model.Topic;
 
 /**
@@ -25,12 +25,13 @@ public class TopicEditActivity extends AppCompatActivity{
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_edit);
 
-        final EditText titleEditText = (EditText)findViewById(R.id.textEditText);
+        final EditText titleEditText = (EditText)findViewById(R.id.titleEditText);
         final EditText descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
 
         Intent intent = getIntent();
 
         topic = (Topic)intent.getSerializableExtra("TOPIC");
+        System.out.println("----------------------------------- Topic id : " + topic.getId());
 
         Button sendMailButton = (Button)findViewById(R.id.sendButton);
 
@@ -59,8 +60,15 @@ public class TopicEditActivity extends AppCompatActivity{
                 Intent updateIntent = new Intent();
                 updateIntent.putExtra("UPDATED_TOPIC", topic);
 
-
+                setResult(1, updateIntent);
+                finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
     }
 }
