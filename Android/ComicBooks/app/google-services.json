@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "576776668838",
+    "firebase_url": "https://comicbooks-fbbe7.firebaseio.com",
+    "project_id": "comicbooks-fbbe7",
+    "storage_bucket": "comicbooks-fbbe7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576776668838:android:9346670a83a0e849",
+        "android_client_info": {
+          "package_name": "com.example.mihai.comicbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576776668838-iml6bkkcmbn4pj5h64ughchcacbg4ogn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mihai.comicbooks",
+            "certificate_hash": "37b850a90fefcc68349e895013d65789f6165dfb"
+          }
+        },
+        {
+          "client_id": "576776668838-nh624gj74tfsj3iunhr54j8mdq0v852e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAocDbuIMdrFAmD0_UeBNnmtJwel2_123c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576776668838-nh624gj74tfsj3iunhr54j8mdq0v852e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

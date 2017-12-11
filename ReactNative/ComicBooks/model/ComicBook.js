@@ -11,7 +11,7 @@ export class ComicBook extends React.Component
         console.log("ComicBook::constructor : this.props = ", this.props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = { titleText: '', descriptionText: '', typeText: ''}
+        this.state = { titleText: '', descriptionText: '', typeText: 'Comic book store'}
     }
 
     handleSubmit()
@@ -29,7 +29,7 @@ export class ComicBook extends React.Component
             type: this.state.typeText
         };
 
-        this.setState({ titleText: '', descriptionText: '', typeText: '' });
+        this.setState({ titleText: '', descriptionText: '', typeText: 'Comic book store' });
 
         this.props.addComicBook(comic);
     }

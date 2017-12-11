@@ -7,25 +7,17 @@ import java.io.Serializable;
  */
 
 public class Topic implements Serializable {
-    private int id;
+
     private String title;
     private String description;
+    private String type;
 
-    public Topic() {
-    }
+    public Topic() { }
 
-    public Topic(int id, String title, String description) {
-        this.id = id;
+    public Topic(String title, String description, String type) {
         this.title = title;
         this.description = description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.type = type;
     }
 
     public String getTitle() {
@@ -44,12 +36,16 @@ public class Topic implements Serializable {
         this.description = description;
     }
 
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
+
     @Override
     public String toString() {
         return "Topic{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                " title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", type=' " + type + '\'' +
                 '}';
     }
 }

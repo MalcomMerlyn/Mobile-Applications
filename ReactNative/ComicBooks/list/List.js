@@ -50,7 +50,17 @@ export class List extends React.Component
     {
         console.log("List::handleAddComicBook : comic = ", comic);
 
-        let indexedComicBook = { key: this.state.listOfComicBooks.length, comic: comic };
+        let max = 0;
+
+        for (let item of this.state.listOfComicBooks)
+        {
+            if (item.key > max)
+            {
+                max = item.key;
+            }
+        }
+
+        let indexedComicBook = { key: max + 1, comic: comic };
         let listOfComicBooks = [...this.state.listOfComicBooks, indexedComicBook];
 
         console.log("List::handleAddComicBook : listOfComicBooks = ", listOfComicBooks);
@@ -79,7 +89,7 @@ export class List extends React.Component
 
         console.log("List::handleClickedItem : comic = ", comic);
 
-        this.props.navigator('Details', {index: index, comic: comic, updateComicBook: this.handleChangedObject});
+        this.props.navigator('Details', {index: index, comic: comic, updateComicBook: this.handleChangedObject, list: this.state.listOfComicBooks});
     }
 
     async handleChangedObject(index, newObject)

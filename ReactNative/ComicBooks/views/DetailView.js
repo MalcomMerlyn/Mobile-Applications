@@ -1,5 +1,5 @@
 import React from "react";
-import {View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {ComicBookEdit} from "../model/ComicBookEdit";
 import {Pie} from "react-native-pathjs-charts";
 
@@ -16,18 +16,29 @@ export class DetailView extends React.Component {
     render()
     {
         let data = [{
-            "name": "Washington",
-            "population": 7694980
+            "name": "Comic book store",
+            "numberItems": 0
         }, {
-            "name": "Oregon",
-            "population": 2584160
+            "name": "Comic book title",
+            "numberItems": 0
         }, {
-            "name": "Minnesota",
-            "population": 6590667
+            "name": "Comic book review",
+            "numberItems": 0
         }, {
-            "name": "Alaska",
-            "population": 7284698
-        }]
+            "name": "Comic book movie",
+            "numberItems": 0
+        }];
+
+        for (let comic of this.navParams.list)
+        {
+            for (let elem of data)
+            {
+                if (elem["name"] == comic.comic.type)
+                {
+                    elem["numberItems"] += 1;
+                }
+            }
+        }
 
         let options = {
             margin: {
@@ -39,7 +50,7 @@ export class DetailView extends React.Component {
             width: 350,
             height: 350,
             color: '#2980B9',
-            r: 50,
+            r: 0,
             R: 150,
             legendPosition: 'topLeft',
             animate: {
@@ -68,9 +79,29 @@ export class DetailView extends React.Component {
                 <Pie
                     data={data}
                     options={options}
-                    accessorKey="population"
+                    accessorKey="numberItems"
                 />
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
+    gauge: {
+        position: 'absolute',
+        width: 100,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    gaugeText: {
+        backgroundColor: 'transparent',
+        color: '#000',
+        fontSize: 24,
+    },
+});

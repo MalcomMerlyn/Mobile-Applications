@@ -3,6 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="itemBackgroundSendButton">#8792d1</color>
-    <color name="itemBackgroundUpdateButton">#8792d1</color>
+    <color name="mycolor">#FFF59D</color>
+    <color name="itemBackground">#FFEB3B</color>
+    <color name="itemBackgroundSendButton">#F9A825</color>
+    <color name="itemBackgroundUpdateButton">#F57F17</color>
+    <color name="itemBackgroundAddButton">#F57F17</color>
+    <color name="itemBackgroundDeleteButton">#ed152b</color>
+    <color name="itemBackgroundPickerButton">#b3ed15</color>
 </resources>
