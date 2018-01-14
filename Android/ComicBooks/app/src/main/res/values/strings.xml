@@ -4,4 +4,14 @@
     <string name="description">Description</string>
     <string name="send_email">Send Email</string>
     <string name="update_topic">Update Topic</string>
+    <string name="add_topic">Add Topic</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="vip">VIP</string>
+    <string name="log_in">Log In</string>
+    <string name="delete">Delete</string>
+    <string name="textview">TextView</string>
+    <string name="logout">Logout</string>
 </resources>

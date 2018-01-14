@@ -43,7 +43,7 @@ public class TopicAdapter extends BaseAdapter {
     {
         for (Map.Entry<String, Topic> pair : topics)
         {
-            if (pair.getKey() == key)
+            if (pair.getKey().equals(key))
             {
                 pair.setValue(topic);
             }
@@ -56,7 +56,7 @@ public class TopicAdapter extends BaseAdapter {
     {
         for (int i = 0; i < topics.size(); i++)
         {
-            if (topics.get(i).getKey() == key)
+            if (topics.get(i).getKey().equals(key))
             {
                 topics.remove(i);
             }
@@ -104,19 +104,20 @@ public class TopicAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View topicsView = View.inflate(this.context, R.layout.topics_view, null);
-        TextView titleView = topicsView.findViewById(R.id.titleTextView);
-        TextView textView = topicsView.findViewById(R.id.descriptionTextView);
+        View topicView = View.inflate(this.context, R.layout.topic_view, null);
+        TextView titleView = topicView.findViewById(R.id.titleTextView);
+        TextView textView = topicView.findViewById(R.id.descriptionTextView);
 
         titleView.setText(topics.get(i).getValue().getTitle());
         textView.setText(topics.get(i).getValue().getDescription());
-        topicsView.setTag(topics.get(i));
+        topicView.setTag(topics.get(i));
 
         final int position = i;
-        Button deleteButtonView = (Button) topicsView.findViewById(R.id.deleteButton);
+        Button deleteButtonView = topicView.findViewById(R.id.deleteButton);
         deleteButtonView.setOnClickListener((View v) -> {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             alertDialog.setTitle("Confirm Delete...");
+
             alertDialog.setMessage("Are you sure you want delete this item?");
 
             alertDialog.setPositiveButton(
@@ -134,6 +135,6 @@ public class TopicAdapter extends BaseAdapter {
             alertDialog.show();
         });
 
-        return topicsView;
+        return topicView;
     }
 }

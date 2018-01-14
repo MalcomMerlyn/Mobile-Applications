@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#e49c29</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="mycolor">#FFF59D</color>
-    <color name="itemBackground">#FFEB3B</color>
-    <color name="itemBackgroundSendButton">#F9A825</color>
+    <color name="color">#FFF59D</color>
+    <color name="itemBackground">#a1c6ff</color>
+    <color name="itemBackgroundButton">#02327b</color>
+    <color name="itemBackgroundSendButton">#deac09</color>
     <color name="itemBackgroundUpdateButton">#F57F17</color>
-    <color name="itemBackgroundAddButton">#F57F17</color>
+    <color name="itemBackgroundAddButton">#17e2f5</color>
     <color name="itemBackgroundDeleteButton">#ed152b</color>
     <color name="itemBackgroundPickerButton">#b3ed15</color>
 </resources>

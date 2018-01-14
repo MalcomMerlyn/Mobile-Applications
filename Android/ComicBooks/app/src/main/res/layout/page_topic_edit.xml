@@ -1,77 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/itemBackground"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <EditText
                 android:id="@+id/titleEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/title"
                 android:inputType="textPersonName"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/descriptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 android:ems="10"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:hint="@string/description"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/titleEditText"
-                app:layout_constraintTop_toBottomOf="@+id/titleEditText"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
             <NumberPicker
                 android:id="@+id/typePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="@+id/descriptionEditText"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
             <Button
                 android:id="@+id/sendButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/itemBackgroundSendButton"
                 android:text="@string/send_email"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/descriptionEditText"
                 app:layout_constraintStart_toStartOf="@+id/descriptionEditText"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
             <Button
                 android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/itemBackgroundUpdateButton"
                 android:text="@string/update_topic"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/sendButton"
                 app:layout_constraintStart_toStartOf="@+id/sendButton"
-                app:layout_constraintTop_toBottomOf="@+id/sendButton"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/sendButton" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                >
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart"
                 android:layout_width="150dp"
@@ -81,6 +104,7 @@
                 app:layout_constraintStart_toStartOf="@+id/updateButton"
                 app:layout_constraintTop_toBottomOf="@+id/updateButton"
                 />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
