@@ -15,8 +15,6 @@ export default (async function registerForPushNotificationsAsync()
     // Get the token that uniquely identifies this device
     let token = await Notifications.getExpoPushTokenAsync();
 
-
-
     userID = firebase.auth().currentUser.uid;
 
     firebase.database().ref(`/users/${userID}`).update({ token: token });

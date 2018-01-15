@@ -90,12 +90,7 @@ export class List extends React.Component {
                         viewOnly={this.viewOnly}
                     />
                 </View>
-                <View style={{flex: 1}}>
-                    <Button
-                        title='Logout'
-                        onPress={firebase.auth().signOut()}
-                    />
-                </View>
+
                 <View style={{flex: 1}}>
                     <FlatList
                         data={this.state.listOfComicBooks}
