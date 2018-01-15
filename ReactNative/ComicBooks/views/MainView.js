@@ -6,7 +6,6 @@ import {List} from "../list/List";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 50,
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -15,20 +14,18 @@ const styles = StyleSheet.create({
     },
 });
 
-export class MainView extends React.Component
-{
+export class MainView extends React.Component {
     static navigationOptions = {
         title: 'Comic Book Sharing',
         headerStyle: {paddingTop: StatusBar.currentHeight}
     }
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
     }
 
     render() {
-        return(
+        return (
             <List navigator={this.props.navigation.navigate}/>
         );
     }

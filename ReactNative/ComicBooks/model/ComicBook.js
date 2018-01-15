@@ -35,41 +35,76 @@ export class ComicBook extends React.Component
     }
 
     render() {
-        return(
-            <View>
-                <Text>
-                    Introduce input to send on mail:
-                </Text>
+        if (this.props.viewOnly) {
+            return (
+                <View>
+                    <Text>
+                        Introduce input to send on mail:
+                    </Text>
 
-                <TextInput
-                    style={{height:50, borderColor: 'black', borderWidth: 1}}
-                    name='TitleInput'
-                    onChangeText={(titleText) => this.setState({titleText})}
-                    value={this.state.titleText}
-                />
+                    <TextInput
+                        style={{height: 50, borderColor: 'black', borderWidth: 1}}
+                        name='TitleInput'
+                        onChangeText={(titleText) => this.setState({titleText})}
+                        value={this.state.titleText}
+                    />
 
-                <TextInput
-                    style={{height:50, borderColor: 'black', borderWidth: 1}}
-                    name='DescriptionInput'
-                    onChangeText={(descriptionText) => this.setState({descriptionText})}
-                    value={this.state.descriptionText}
-                />
+                    <TextInput
+                        style={{height: 50, borderColor: 'black', borderWidth: 1}}
+                        name='DescriptionInput'
+                        onChangeText={(descriptionText) => this.setState({descriptionText})}
+                        value={this.state.descriptionText}
+                    />
 
-                <TypePicker
-                    selectedValue={this.state.typeText}
-                    onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
-                />
+                    <TypePicker
+                        selectedValue={this.state.typeText}
+                        onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
+                    />
 
-                <Button
-                    title='Send email'
-                    onPress={this.handleSubmit}
-                />
+                    <Button
+                        title='Send email'
+                        onPress={this.handleSubmit}
+                    />
 
-                <Button
-                    title='Add comic book'
-                    onPress={this.handleAddComicBook.bind(this)}
-                />
-            </View>
-        );
+                    <Button
+                        title='Add comic book'
+                        onPress={this.handleAddComicBook.bind(this)}
+                    />
+                </View>
+            );
+        }
+        else {
+            return (
+                <View>
+                    <Text>
+                        Introduce input to send on mail:
+                    </Text>
+
+                    <TextInput
+                        style={{height: 50, borderColor: 'black', borderWidth: 1}}
+                        name='TitleInput'
+                        onChangeText={(titleText) => this.setState({titleText})}
+                        value={this.state.titleText}
+                    />
+
+                    <TextInput
+                        style={{height: 50, borderColor: 'black', borderWidth: 1}}
+                        name='DescriptionInput'
+                        onChangeText={(descriptionText) => this.setState({descriptionText})}
+                        value={this.state.descriptionText}
+                    />
+
+                    <TypePicker
+                        selectedValue={this.state.typeText}
+                        onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
+                    />
+
+                    <Button
+                        title='Add comic book'
+                        onPress={this.handleAddComicBook.bind(this)}
+                    />
+                </View>
+            );
+        }
     }
 }

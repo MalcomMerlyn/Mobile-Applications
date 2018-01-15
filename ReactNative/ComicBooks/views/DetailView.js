@@ -15,76 +15,90 @@ export class DetailView extends React.Component {
 
     render()
     {
-        let data = [{
-            "name": "Comic book store",
-            "numberItems": 0
-        }, {
-            "name": "Comic book title",
-            "numberItems": 0
-        }, {
-            "name": "Comic book review",
-            "numberItems": 0
-        }, {
-            "name": "Comic book movie",
-            "numberItems": 0
-        }];
+        let data = [];
 
         for (let comic of this.navParams.list)
         {
+            let exist = 0;
+
             for (let elem of data)
             {
-                if (elem["name"] == comic.comic.type)
+                console.log(elem, comic.comic.type);
+                if (elem.name == comic.comic.type)
                 {
-                    elem["numberItems"] += 1;
+                    elem.numberItems += 1;
+                    exist = 1;
                 }
             }
-        }
 
-        let options = {
-            margin: {
-                top: 20,
-                left: 20,
-                right: 20,
-                bottom: 20
-            },
-            width: 350,
-            height: 350,
-            color: '#2980B9',
-            r: 0,
-            R: 150,
-            legendPosition: 'topLeft',
-            animate: {
-                type: 'oneByOne',
-                duration: 200,
-                fillTransition: 3
-            },
-            label: {
-                fontFamily: 'Arial',
-                fontSize: 8,
-                fontWeight: true,
-                color: '#ECF0F1'
+            if (exist === 0)
+            {
+                data.push({
+                    name: comic.comic.type,
+                    numberItems: 1
+                });
             }
         }
-        return (
-            <View>
-                <ComicBookEdit
-                    updateComicBook={this.navParams.updateComicBook}
-                    index={this.navParams.index}
-                    title={this.navParams.comic.title}
-                    description={this.navParams.comic.description}
-                    type={this.navParams.comic.type}
-                >
-                </ComicBookEdit>
+        if (!this.props.viewOnly) {
+            return (
+                <View>
+                    <ComicBookEdit
+                        comicKey={this.navParams.comicKey}
+                        comic={this.navParams.comic}
+                        updateComicBook={this.navParams.updateComicBook}
 
-                <Pie
-                    data={data}
-                    options={options}
-                    accessorKey="numberItems"
-                />
-            </View>
-        );
+                    >
+                    </ComicBookEdit>
+
+                    <Pie
+                        data={data}
+                        options={options}
+                        accessorKey="numberItems"
+                    />
+                </View>
+            );
+        }
+        else {
+            return (
+                <View>
+                    <ComicBookEdit
+                        comicKey={this.navParams.comicKey}
+                        comic={this.navParams.comic}
+                        updateComicBook={this.navParams.updateComicBook}
+
+                    >
+                    </ComicBookEdit>
+                </View>
+            );
+        }
     }
 }
+
+const options = {
+    margin: {
+        top: 20,
+        left: 20,
+        right: 20,
+        bottom: 20
+    },
+    width: 350,
+    height: 350,
+    color: '#2980B9',
+    r: 0,
+    R: 150,
+    legendPosition: 'topLeft',
+    animate: {
+        type: 'oneByOne',
+        duration: 200,
+        fillTransition: 3
+    },
+    label: {
+        fontFamily: 'Arial',
+        fontSize: 8,
+        fontWeight: true,
+        color: '#ECF0F1'
+    }
+};
 
 const styles = StyleSheet.create({
     container: {

@@ -14,40 +14,34 @@ const styles = StyleSheet.create({
 
 export class ComicBookEdit extends React.Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
 
         console.log("ComicBookEdit::constructor : this.props = ", this.props);
 
         this.state = {
-            titleText: this.props.title,
-            descriptionText: this.props.description,
-            typeText: this.props.type
+            titleText: this.props.comic.title,
+            descriptionText: this.props.comic.description,
+            typeText: this.props.comic.type
         };
     }
 
-    updateComicBook()
-    {
-        let newComicBook = { comic: {
-            title: this.state.titleText,
-            description: this.state.descriptionText,
-            type: this.state.typeText
-        }};
+    updateComicBook() {
+        let newComicBook = {
+                title: this.state.titleText,
+                description: this.state.descriptionText,
+                type: this.state.typeText
+        };
 
-        this.props.updateComicBook(this.props.index, newComicBook);
+        this.props.updateComicBook(this.props.comicKey, newComicBook);
     }
 
-    componentWillUnmount()
-    {
-        if (this.state.titleText != this.props.titleText ||
-            this.state.descriptionText != this.props.descriptionText ||
-            this.state.typeText != this.props.typeText
+    componentWillUnmount() {
+        if (this.state.titleText !== this.props.comic.title ||
+            this.state.descriptionText !== this.props.comic.description ||
+            this.state.typeText !== this.props.comic.type
         ) {
             console.log("ComicBookEdit::componentWillUnmount : this.props = ", this.props);
-
-            //let newComicBook = {comic: {title: this.state.titleText, description: this.state.descriptionText}};
-            //this.props.updateComicBook(this.props.index, newComicBook);
 
             Alert.alert(
                 'Save?',
@@ -61,8 +55,7 @@ export class ComicBookEdit extends React.Component {
         }
     }
 
-    handleOnValueChange(itemValue, itemIndex)
-    {
+    handleOnValueChange(itemValue, itemIndex) {
         this.setState({type: itemValue});
     }
 
@@ -83,7 +76,7 @@ export class ComicBookEdit extends React.Component {
                     onChangeText={(descriptionText) => this.setState({descriptionText})}
                     value={this.state.descriptionText}
                 />
-                <Text style={styles.typeText}>Type:</Text>
+                <Text style={styles.titleText}>Type:</Text>
                 <TypePicker
                     selectedValue={this.state.typeText}
                     onValueChange={(itemValue, itemIndex) => this.setState({typeText: itemValue})}
